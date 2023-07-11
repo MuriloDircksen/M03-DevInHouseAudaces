@@ -9,19 +9,22 @@ namespace M03_Escola.Services
     public class NotasMateriaService : INotasMateriaService
     {
         private readonly INotasMateriaRepository _notasMateriaRepository;
+        
         public NotasMateria Atualizar(NotasMateria notasMateria)
         {
-            var notasMateriaDb = _notasMateriaRepository.ObterPorId(notasMateria.Id);
-
-            if (notasMateriaDb == null)
-            {
-                throw new NotFoundException("Relação Notas Matéria não cadastrado");
-
-            }
+            var notasMateriaDb = _notasMateriaRepository.ObterPorId(notasMateria.Id) ?? throw new NotFoundException("Relação Notas Matéria não cadastrado");
+            
+           
             notasMateriaDb.Update(notasMateria);
 
             _notasMateriaRepository.Atualizar(notasMateriaDb);
             return notasMateriaDb;
+        }
+
+        public NotasMateria Cadastrar(NotasMateria notasMateria)
+        {          
+            _notasMateriaRepository.Inserir(notasMateria);
+            return notasMateria;
         }
 
         public void Excluir(int id)
@@ -37,17 +40,12 @@ namespace M03_Escola.Services
         {
             var notasMateria = _notasMateriaRepository.ObterPorBoletimId(boletimId);
 
-            return notasMateria == null ? throw new NotFoundException("Relação Notas Materia não encontrado") : notasMateria;
+            return notasMateria ?? throw new NotFoundException("Relação Notas Materia não encontrado");
         }
 
         public NotasMateria ObterPorId(int id)
         {
-            var notasMateria = _notasMateriaRepository.ObterPorId(id);
-
-            if (notasMateria == null)
-            {
-                throw new NotFoundException("Relação Notas Materia não encontrado");
-            }
+            var notasMateria = _notasMateriaRepository.ObterPorId(id) ?? throw new NotFoundException("Relação Notas Materia não encontrado");
             return notasMateria;
         }        
     }

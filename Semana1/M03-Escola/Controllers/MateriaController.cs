@@ -2,32 +2,31 @@
 using M03_Escola.Exceptions;
 using M03_Escola.Interfaces.Services;
 using M03_Escola.Model;
+using M03_Escola.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace M03_Escola.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BoletimController : Controller
+    public class MateriaController : Controller
     {
-        private readonly IBoletimService _boletimService;
+        private readonly IMateriaService _materiaService;
 
-        public BoletimController(IBoletimService boletimService)
+        public MateriaController(IMateriaService materiaService)
         {
-            _boletimService = boletimService;
+            _materiaService = materiaService;
         }
 
-        [HttpPost("/alunos/{idAluno}/boletins")]
-        public ActionResult Post(BoletimDTO boletim, int idAluno)
+        [HttpPost]
+        public ActionResult Post(MateriaDTO materia)
         {
             try
             {
-                boletim.AlunoId = idAluno;
-
-                boletim.Id = _boletimService.Cadastrar(new Boletim(boletim)).Id;
-                                
-
-                return Ok(boletim);
+                
+               var  materiaDB = _materiaService.Cadastrar(new Materia(materia));
+                               
+                return Ok(new MateriaDTO(materiaDB));
             }
             catch (NotFoundException ex)
             {
@@ -39,16 +38,15 @@ namespace M03_Escola.Controllers
             }
         }
 
-        [HttpPut("/alunos/{idAluno}/boletins/{id}")]
-        public ActionResult Put(BoletimDTO boletim, int idAluno, int id)
+        [HttpPut("{id}")]
+        public ActionResult Put(MateriaDTO materia, int id)
         {
             try
-            {
-                boletim.AlunoId = idAluno;
+            {              
 
-                boletim.Id = id;
+                materia.Id = id;
 
-                return Ok(new BoletimDTO(_boletimService.Atualizar(new Boletim(boletim))));
+                return Ok(new MateriaDTO(_materiaService.Atualizar(new Materia(materia))));
             }
             catch (NotFoundException ex)
             {
@@ -60,14 +58,13 @@ namespace M03_Escola.Controllers
             }
         }
 
-        [HttpGet("/alunos/{idAluno}/boletins")]
-        public ActionResult GetPorAluno(int idAluno)
+        [HttpGet("{nome}")]
+        public ActionResult GetPornome(string nome)
         {
             try
             {
-
-                var boletins = _boletimService.ObterPorAluno(idAluno);
-                return Ok(boletins.Select(x => new BoletimDTO(x)));
+                var materias = _materiaService.ObterPorNome(nome);
+                return Ok(materias.Select(x => new MateriaDTO(x)));
             }
             catch (NotFoundException ex)
             {
@@ -77,40 +74,16 @@ namespace M03_Escola.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-        }
+        }        
 
-        [HttpGet("/alunos/{idAluno}/boletins/{id}")]
-        public ActionResult GetPorIdValidaAluno(int idAluno, int id)
-        {
-            try
-            {
-
-                var boletim = _boletimService.ObterPorId(id);
-
-                if (boletim.AlunoId != idAluno)
-                    return NotFound("Boletim Id invalido para aluno");
-
-                return Ok(new BoletimDTO(boletim));
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-        [HttpGet("/boletins/{id}")]
+        [HttpGet("{id}")]
         public ActionResult GetPorId(int id)
         {
             try
             {
+                var materia = _materiaService.ObterPorId(id);
 
-                var boletim = _boletimService.ObterPorId(id);
-
-                return Ok(new BoletimDTO(boletim));
+                return Ok(new MateriaDTO(materia));
             }
             catch (NotFoundException ex)
             {
@@ -121,13 +94,27 @@ namespace M03_Escola.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpGet]
+        public ActionResult Get()
+        {
+            try
+            {
+                var materias = _materiaService.ObterMaterias();
+                IEnumerable<MateriaDTO> materiasDTO = materias.Select(x => new MateriaDTO(x));
+                return Ok(materiasDTO);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
 
-        [HttpDelete("boletins/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
             try
             {
-                _boletimService.Excluir(id);
+                _materiaService.Excluir(id);
 
                 return StatusCode(204);
             }

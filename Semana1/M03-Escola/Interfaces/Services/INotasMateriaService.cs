@@ -8,6 +8,7 @@ namespace M03_Escola.Interfaces.Services
         public NotasMateria ObterPorId(int id);
         List<NotasMateria> ObterPorBoletimId(int boletimId);
         NotasMateria Atualizar(NotasMateria notasMateria);
+        NotasMateria Cadastrar(NotasMateria notasMateria);
         void Excluir(int id);
     }
 }
