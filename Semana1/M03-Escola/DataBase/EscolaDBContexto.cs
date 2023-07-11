@@ -8,6 +8,10 @@ namespace M03_Escola.DataBase
         public virtual DbSet<Aluno> Alunos { get; set; }
 
         public virtual DbSet<Turma> Turmas { get; set; }
+        public virtual DbSet<AlunoTurma> AlunoTurmas { get; set; }
+        public virtual DbSet<Materia> Materias { get; set; }
+        public virtual DbSet<NotasMateria> NotasMaterias { get; set; }
+        public virtual DbSet<Boletim> Boletims { get; set; }
         public EscolaDBContexto() { }
         public EscolaDBContexto(DbContextOptions<EscolaDBContexto> options)
             : base(options) { }
@@ -98,6 +102,82 @@ namespace M03_Escola.DataBase
 
             modelBuilder.Entity<Turma>().HasIndex(x => x.Nome)
                                         .IsUnique();
+
+            modelBuilder.Entity<AlunoTurma>().ToTable("AlunoTurma");
+            modelBuilder.Entity<AlunoTurma>().Property(x => x.Id)
+                                              .HasColumnType("int")
+                                              .HasColumnName("ID");
+            modelBuilder.Entity<AlunoTurma>().Property(x => x.TurmaId)
+                                             .HasColumnType("int")
+                                             .HasColumnName("FK_Turma");
+            modelBuilder.Entity<AlunoTurma>().Property(x => x.AlunoId)
+                                             .HasColumnType("int")
+                                             .HasColumnName("FK_Aluno");
+
+            modelBuilder.Entity<Aluno>().HasMany(x => x.Turmas)
+                                        .WithMany(x => x.Alunos)
+                                        .UsingEntity<AlunoTurma>(
+                                            t=> t.HasOne<Turma>(x=> x.Turma).WithMany().HasForeignKey(x=> x.TurmaId),
+                                            a=> a.HasOne<Aluno>(x=> x.Aluno).WithMany().HasForeignKey(x=> x.AlunoId)
+                                            //um aluno aluno tem muitas turmas pela chave estrangeira alunoid de aluno turmas
+                                            );
+
+            modelBuilder.Entity<Materia>().ToTable("Materia");
+
+            modelBuilder.Entity<Materia>().Property(x => x.Id)
+                                        .HasColumnType("int")
+                                        .HasColumnName("ID");
+            modelBuilder.Entity<Materia>().HasKey(x => x.Id);
+            modelBuilder.Entity<Materia>().HasIndex(x => x.Nome)
+                                        .IsUnique();
+
+            modelBuilder.Entity<Boletim>().ToTable("BOLETIM");
+            modelBuilder.Entity<Boletim>().Property(x => x.Id)
+                                          .HasColumnType("int")
+                                          .HasColumnName("ID");
+            modelBuilder.Entity<Boletim>().HasKey(x => x.Id);
+
+
+            modelBuilder.Entity<Boletim>().Property(x => x.Data)
+                                            .HasColumnType("date")
+                                           .HasColumnName("DATA");
+            modelBuilder.Entity<Boletim>().Property(x => x.AlunoId)
+                                        .HasColumnType("int")
+                                        .HasColumnName("FK_Aluno");
+
+            modelBuilder.Entity<NotasMateria>().ToTable("NotasMateria");
+            modelBuilder.Entity<NotasMateria>().Property(x => x.Id)
+                                               .HasColumnType("int")
+                                               .HasColumnName("ID");
+            modelBuilder.Entity<NotasMateria>().HasKey(x => x.Id);
+            modelBuilder.Entity<NotasMateria>().Property(x => x.BoletimId)
+                                               .HasColumnType("int")
+                                               .HasColumnName("FK_Boletim");
+            modelBuilder.Entity<NotasMateria>().Property(x => x.MateriaId)
+                                               .HasColumnType("int")
+                                               .HasColumnName("FK_Materia");
+            modelBuilder.Entity<NotasMateria>().Property(x => x.Nota)
+                                               .HasColumnType("int")
+                                               .HasColumnName("Nota");
+
+            //definição conexões entre as tabelas via fluent 
+
+            modelBuilder.Entity<Boletim>().HasOne(x => x.Aluno)
+                                          .WithMany(x => x.Boletins)
+                                          .HasForeignKey(x => x.AlunoId);
+
+            modelBuilder.Entity<Boletim>().HasMany(x => x.NotasMaterias)
+                                          .WithOne(x => x.Boletim)
+                                          .HasForeignKey(x => x.BoletimId);
+
+            modelBuilder.Entity<NotasMateria>().HasOne(x => x.Materia)
+                                               .WithMany(x => x.NotasMaterias)
+                                               .HasForeignKey(x => x.MateriaId);
+
+
+
+
+
 
         }
     }

@@ -12,12 +12,13 @@ namespace M03_Escola.Model
         public string Telefone { get; set; }
         public string Email { get; set; }
         public DateTime DataNascimento { get; set; }
+        public virtual List<Turma> Turmas { get; set; }
+        public virtual List<Boletim> Boletins { get; set; }
 
         public Aluno()
         {
 
         }
-
 
         public Aluno(AlunoDTO aluno)
         {
