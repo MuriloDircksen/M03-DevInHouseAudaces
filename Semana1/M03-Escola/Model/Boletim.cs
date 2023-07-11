@@ -1,4 +1,6 @@
-﻿namespace M03_Escola.Model
+﻿using M03_Escola.DTO;
+
+namespace M03_Escola.Model
 {
     public class Boletim
     {
@@ -19,12 +21,12 @@
         {
 
         }
-        //public Boletim(BoletimDTO boletim)
-        //{
+        public Boletim(BoletimDTO boletim)
+        {
 
-        //    Id = boletim.Id;
-        //    Data = boletim.Data;
-        //    AlunoId = boletim.AlunoId;
-        //}
+            Id = boletim.Id;
+            Data = boletim.Data;
+            AlunoId = boletim.AlunoId;
+        }
     }
 }

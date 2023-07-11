@@ -26,14 +26,26 @@ namespace M03_Escola
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Escola.API", Version = "v1" });
             });
+
+            //injeção de interfaces e classes para a transação de dados
+            //Services
+            builder.Services.AddScoped<IAlunoService, AlunoService>();
+            builder.Services.AddScoped<IBoletimService, BoletimService>();
+            builder.Services.AddScoped<IMateriaService, MateriaService>();
+            builder.Services.AddScoped<INotasMateriaService, NotasMateriaService>();
+
+            //repositorios
             builder.Services.AddDbContext<EscolaDBContexto>(options =>
                                 options.UseSqlServer(
                                     builder.Configuration.GetConnectionString("ServerConnection")));
             builder.Services.AddDbContext<EscolaDBContexto>();
 
-            builder.Services.AddScoped<IAlunoService, AlunoService>();
+            
             builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
             builder.Services.AddScoped<ITurmaRepository, TurmaRepository>();
+            builder.Services.AddScoped<IBoletimRepository, BoletimRepository>();
+            builder.Services.AddScoped<IMateriaRepository, MateriaRepository>();
+            builder.Services.AddScoped<INotasMateriaRepository, NotasMateriaRepository>();
 
             builder.Services.AddMemoryCache();
 

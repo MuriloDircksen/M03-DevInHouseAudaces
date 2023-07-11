@@ -114,13 +114,7 @@ namespace M03_Escola.DataBase
                                              .HasColumnType("int")
                                              .HasColumnName("FK_Aluno");
 
-            modelBuilder.Entity<Aluno>().HasMany(x => x.Turmas)
-                                        .WithMany(x => x.Alunos)
-                                        .UsingEntity<AlunoTurma>(
-                                            t=> t.HasOne<Turma>(x=> x.Turma).WithMany().HasForeignKey(x=> x.TurmaId),
-                                            a=> a.HasOne<Aluno>(x=> x.Aluno).WithMany().HasForeignKey(x=> x.AlunoId)
-                                            //um aluno aluno tem muitas turmas pela chave estrangeira alunoid de aluno turmas
-                                            );
+            
 
             modelBuilder.Entity<Materia>().ToTable("Materia");
 
@@ -173,6 +167,13 @@ namespace M03_Escola.DataBase
             modelBuilder.Entity<NotasMateria>().HasOne(x => x.Materia)
                                                .WithMany(x => x.NotasMaterias)
                                                .HasForeignKey(x => x.MateriaId);
+            modelBuilder.Entity<Aluno>().HasMany(x => x.Turmas)
+                                        .WithMany(x => x.Alunos)
+                                        .UsingEntity<AlunoTurma>(
+                                            t => t.HasOne<Turma>(x => x.Turma).WithMany().HasForeignKey(x => x.TurmaId),
+                                            a => a.HasOne<Aluno>(x => x.Aluno).WithMany().HasForeignKey(x => x.AlunoId)
+                                            //um aluno aluno tem muitas turmas pela chave estrangeira alunoid de aluno turmas
+                                            );
 
 
 
