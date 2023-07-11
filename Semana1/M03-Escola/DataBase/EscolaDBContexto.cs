@@ -44,7 +44,12 @@ namespace M03_Escola.DataBase
                                         .HasColumnType("VARCHAR")
                                         .HasMaxLength(150);
 
-            modelBuilder.Entity<Aluno>().Ignore(x => x.Idade);
+            modelBuilder.Entity<Aluno>().Property(x => x.Idade)
+                                        .IsRequired()
+                                        .HasColumnName("Idade")
+                                        .HasColumnType("INT");
+
+           // modelBuilder.Entity<Aluno>().Ignore(x => x.Idade);
 
             modelBuilder.Entity<Aluno>().Property(x => x.Email)
                                         .IsRequired()
