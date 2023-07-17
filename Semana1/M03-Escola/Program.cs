@@ -60,6 +60,9 @@ namespace M03_Escola
             builder.Services.AddScoped<IBoletimService, BoletimService>();
             builder.Services.AddScoped<IMateriaService, MateriaService>();
             builder.Services.AddScoped<INotasMateriaService, NotasMateriaService>();
+            builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
+            builder.Services.AddTransient<IAutenticacaoServices, AutenticacaoServices>();
+
 
             //repositorios
             builder.Services.AddDbContext<EscolaDBContexto>(options =>
@@ -73,6 +76,7 @@ namespace M03_Escola
             builder.Services.AddScoped<IBoletimRepository, BoletimRepository>();
             builder.Services.AddScoped<IMateriaRepository, MateriaRepository>();
             builder.Services.AddScoped<INotasMateriaRepository, NotasMateriaRepository>();
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             builder.Services.AddMemoryCache();
 

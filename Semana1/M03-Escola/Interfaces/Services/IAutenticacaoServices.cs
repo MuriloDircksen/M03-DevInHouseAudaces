@@ -1,10 +1,11 @@
 ﻿using M03_Escola.DTO;
+using M03_Escola.Model;
 
 namespace M03_Escola.Interfaces.Services
 {
     public interface IAutenticacaoServices
     {
-        bool Autenticar(LoginDTO login);
-        string GerarToken(LoginDTO loginDTO);
+        string Autenticar(LoginDTO login);
+        string GerarToken(Usuario usuario);
     }
 }

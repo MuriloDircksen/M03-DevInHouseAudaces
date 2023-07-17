@@ -1,5 +1,7 @@
 ﻿using M03_Escola.DTO;
+using M03_Escola.Exceptions;
 using M03_Escola.Interfaces.Services;
+using M03_Escola.Model;
 using M03_Escola.Util;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -21,21 +23,20 @@ namespace M03_Escola.Services
             _chaveJwt = configuration.GetSection("jwtTokenChave").Get<string>();
         }
 
-        public bool Autenticar(LoginDTO login)
+        public string Autenticar(LoginDTO login)
         {
             var usuario = _usuarioService.ObterPorId(login.Usuario);
             if (usuario != null)
             {
-                return usuario.Senha == Criptografia.CriptografarSenha(login.Senha);
+                if( usuario.Senha == Criptografia.CriptografarSenha(login.Senha)) return GerarToken(usuario); ;
 
             }
-            return false;
+            throw new LoginInvalidoException("Usuario ou senha Inválidos");
 
         }
 
-        public string GerarToken(LoginDTO loginDTO)
-        {
-            var usuario = _usuarioService.ObterPorId(loginDTO.Usuario);
+        public string GerarToken(Usuario usuario)
+        {           
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_chaveJwt);
