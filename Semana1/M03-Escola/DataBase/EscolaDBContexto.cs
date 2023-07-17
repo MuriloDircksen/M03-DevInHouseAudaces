@@ -27,6 +27,13 @@ namespace M03_Escola.DataBase
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Usuario>().HasKey(x => x.Login);
+            modelBuilder.Entity<Usuario>().Property(x => x.Login)
+                                           .HasMaxLength(50);
+
+            modelBuilder.Entity<Usuario>().Property(x => x.Senha)
+                                          .HasMaxLength(50);
+
             modelBuilder.Entity<Aluno>().ToTable("AlunoTB");
 
             modelBuilder.Entity<Aluno>().HasKey(x => x.Id)
