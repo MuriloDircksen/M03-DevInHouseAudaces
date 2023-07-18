@@ -8,6 +8,7 @@ namespace M03_Escola.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class UsuariosController : BaseController
     {
         private readonly IUsuarioService _usuarioService;

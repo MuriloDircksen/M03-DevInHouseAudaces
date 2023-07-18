@@ -1,4 +1,5 @@
 ﻿using M03_Escola.DTO;
+using M03_Escola.Util;
 
 namespace M03_Escola.Model
 {
@@ -22,7 +23,7 @@ namespace M03_Escola.Model
         }
         public Usuario(UsuarioDTO usuario) : this((UsuarioGetDTO)usuario)
         {
-            Senha = usuario.Senha;
+            Senha = Criptografia.CriptografarSenha(usuario.Senha);
         }
 
         public void Update(Usuario usuario)

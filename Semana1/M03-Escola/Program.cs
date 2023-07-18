@@ -61,7 +61,7 @@ namespace M03_Escola
             builder.Services.AddScoped<IMateriaService, MateriaService>();
             builder.Services.AddScoped<INotasMateriaService, NotasMateriaService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
-            builder.Services.AddTransient<IAutenticacaoServices, AutenticacaoServices>();
+            builder.Services.AddScoped<IAutenticacaoServices, AutenticacaoServices>();
 
 
             //repositorios
@@ -95,6 +95,7 @@ namespace M03_Escola
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.UseAuthentication();
             app.UseMiddleware<ErrorMiddleware>(); //habilitado uso do middleware criado
 
 

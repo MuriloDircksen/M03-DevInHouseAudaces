@@ -2,12 +2,14 @@
 using M03_Escola.Exceptions;
 using M03_Escola.Interfaces.Services;
 using M03_Escola.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace M03_Escola.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class BoletimController : Controller
     {
         private readonly IBoletimService _boletimService;
