@@ -83,9 +83,9 @@ namespace M03_Escola
 
             //add cache
             builder.Services.AddMemoryCache();
-
-            var jwtChave = Configuration.GetSection("jwtTokenChave").Get<string>();
-            services.AddAuthentication(x =>
+            
+            var jwtChave = builder.Configuration.GetSection("jwtTokenChave").Get<string>();
+            builder.Services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;

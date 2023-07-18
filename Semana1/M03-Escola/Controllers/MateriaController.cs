@@ -21,6 +21,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Professor")]
         public ActionResult Post(MateriaDTO materia)
         {            
                 
@@ -31,6 +32,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Professor")]
         public ActionResult Put(MateriaDTO materia, int id)
         {                          
 
@@ -41,6 +43,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpGet("{nome}")]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult GetPornome(string nome)
         {            
                 var materias = _materiaService.ObterPorNome(nome);
@@ -49,6 +52,7 @@ namespace M03_Escola.Controllers
         }        
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult GetPorId(int id)
         {            
                 var materia = _materiaService.ObterPorId(id);
@@ -57,6 +61,7 @@ namespace M03_Escola.Controllers
             
         }
         [HttpGet]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult Get()
         {            
                 var materias = _materiaService.ObterMaterias();
@@ -66,6 +71,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Professor")]
         public ActionResult Delete(int id)
         {            
                 _materiaService.Excluir(id);

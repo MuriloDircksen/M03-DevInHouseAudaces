@@ -23,6 +23,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Professor")]
         public IActionResult Post([FromBody] AlunoDTO alunoDTO)
         {
             
@@ -36,6 +37,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult<AlunoDTO> Get()
         {
             
@@ -48,6 +50,7 @@ namespace M03_Escola.Controllers
 
         [HttpGet]
         [Route("/{id}")]
+        [Authorize(Roles = "Professor, Aluno")]
         public IActionResult GetComId([FromRoute] int id)
         {
             
@@ -64,6 +67,7 @@ namespace M03_Escola.Controllers
 
         [HttpPut]
         [Route("/{id}")]
+        [Authorize(Roles = "Professor")]
         public IActionResult AtualizaAluno([FromBody] AlunoDTO alunoDTO, [FromRoute] int id)
         {
             
@@ -84,6 +88,7 @@ namespace M03_Escola.Controllers
 
         [HttpDelete]
         [Route("/{id}")]
+        [Authorize(Roles = "Professor")]
         public IActionResult Delete(int id)
         {
             

@@ -20,6 +20,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Professor")]
         public ActionResult Post(NotasMateriaDTO notasMateria)
         {
                 var notasMateriaDB = _notasMateriaService.Cadastrar(new NotasMateria(notasMateria));
@@ -29,6 +30,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Professor")]
         public ActionResult Put(NotasMateriaDTO notasMateria, int id)
         {
                 notasMateria.Id = id;
@@ -38,6 +40,7 @@ namespace M03_Escola.Controllers
         }
               
         [HttpGet("{id}")]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult GetPorId(int id)
         {
                 var notasMateria = _notasMateriaService.ObterPorId(id);
@@ -46,6 +49,7 @@ namespace M03_Escola.Controllers
             
         }
         [HttpGet]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult Get()
         {
                 var notasMaterias = _notasMateriaService.ObterNotasMaterias();
@@ -55,6 +59,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Professor")]
         public ActionResult Delete(int id)
         {            
                 _notasMateriaService.Excluir(id);

@@ -20,6 +20,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpPost("/alunos/{idAluno}/boletins")]
+        [Authorize(Roles = "Professor")]
         public ActionResult Post(BoletimDTO boletim, int idAluno)
         {
             
@@ -33,6 +34,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpPut("/alunos/{idAluno}/boletins/{id}")]
+        [Authorize(Roles = "Professor")]
         public ActionResult Put(BoletimDTO boletim, int idAluno, int id)
         {
             
@@ -45,6 +47,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpGet("/alunos/{idAluno}/boletins")]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult GetPorAluno(int idAluno)
         {
             
@@ -55,6 +58,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpGet("/alunos/{idAluno}/boletins/{id}")]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult GetPorIdValidaAluno(int idAluno, int id)
         {
             
@@ -68,6 +72,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpGet("/boletins/{id}")]
+        [Authorize(Roles = "Professor, Aluno")]
         public ActionResult GetPorId(int id)
         {
             
@@ -79,6 +84,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpDelete("boletins/{id}")]
+        [Authorize(Roles = "Professor")]
         public ActionResult Delete(int id)
         {
             
