@@ -7,7 +7,7 @@ namespace M03_Escola.DTO
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Permissao { get; set; }
-        public bool Interno { get; set; }
+       
 
 
         public UsuarioGetDTO()
@@ -18,7 +18,7 @@ namespace M03_Escola.DTO
             Nome = usuario.Nome;
             Login = usuario.Login;
             Permissao = usuario.Permissao;
-            Interno = usuario.Interno;
+           
         }
     }
 }

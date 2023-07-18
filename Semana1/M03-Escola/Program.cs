@@ -91,10 +91,12 @@ namespace M03_Escola
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(x =>
             {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(jwtChave)),
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(jwtChave)),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
@@ -115,9 +117,9 @@ namespace M03_Escola
             }
 
             app.UseHttpsRedirection();
-
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseMiddleware<ErrorMiddleware>(); //habilitado uso do middleware criado
 
 

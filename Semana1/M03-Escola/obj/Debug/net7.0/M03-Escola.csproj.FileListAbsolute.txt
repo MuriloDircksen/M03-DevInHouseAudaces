@@ -74,3 +74,4 @@ C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\refint\M03-Esc
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\M03-Escola.pdb
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\M03-Escola.genruntimeconfig.cache
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\ref\M03-Escola.dll
+C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

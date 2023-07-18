@@ -12,6 +12,7 @@ namespace M03_Escola.DataBase
         public virtual DbSet<Materia> Materias { get; set; }
         public virtual DbSet<NotasMateria> NotasMaterias { get; set; }
         public virtual DbSet<Boletim> Boletims { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
         public EscolaDBContexto() { }
         public EscolaDBContexto(DbContextOptions<EscolaDBContexto> options)
             : base(options) { }
@@ -159,7 +160,7 @@ namespace M03_Escola.DataBase
                                                .HasColumnName("FK_Materia");
             modelBuilder.Entity<NotasMateria>().Property(x => x.Nota)
                                                .HasColumnType("int")
-                                               .HasColumnName("Nota");
+                                               .HasColumnName("Nota");            
 
             //definição conexões entre as tabelas via fluent 
 

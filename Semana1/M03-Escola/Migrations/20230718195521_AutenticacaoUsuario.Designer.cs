@@ -4,6 +4,7 @@ using M03_Escola.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace M03_Escola.Migrations
 {
     [DbContext(typeof(EscolaDBContexto))]
-    partial class EscolaDBContextoModelSnapshot : ModelSnapshot
+    [Migration("20230718195521_AutenticacaoUsuario")]
+    partial class AutenticacaoUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

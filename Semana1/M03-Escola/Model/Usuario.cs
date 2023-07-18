@@ -9,7 +9,7 @@ namespace M03_Escola.Model
         public string Login { get; set; }
         public string Permissao { get; set; }
         public string Senha { get; set; }
-        public bool Interno { get; set; }
+       
         public Usuario()
         {
 
@@ -19,11 +19,11 @@ namespace M03_Escola.Model
             Nome = usuario.Nome;
             Login = usuario.Login;
             Permissao = usuario.Permissao;
-            Interno = usuario.Interno;
+            
         }
         public Usuario(UsuarioDTO usuario) : this((UsuarioGetDTO)usuario)
         {
-            Senha = Criptografia.CriptografarSenha(usuario.Senha);
+            Senha = usuario.Senha;
         }
 
         public void Update(Usuario usuario)

@@ -10,7 +10,7 @@ namespace M03_Escola.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
     public class AlunosController : ControllerBase
     {
         private readonly IAlunoService _alunoService;
@@ -37,7 +37,7 @@ namespace M03_Escola.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Professor, Aluno")]
+        [Authorize(Roles = "Professor,Aluno")]
         public ActionResult<AlunoDTO> Get()
         {
             
@@ -50,7 +50,7 @@ namespace M03_Escola.Controllers
 
         [HttpGet]
         [Route("/{id}")]
-        [Authorize(Roles = "Professor, Aluno")]
+        [Authorize(Roles = "Professor,Aluno")]
         public IActionResult GetComId([FromRoute] int id)
         {
             

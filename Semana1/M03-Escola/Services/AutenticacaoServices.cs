@@ -71,7 +71,7 @@ namespace M03_Escola.Services
                   {
                       new Claim(ClaimTypes.Name, usuario.Login),
                       new Claim("Nome", usuario.Nome),
-                      new Claim("Interno", usuario.Interno.ToString()),
+                      //new Claim("Interno", usuario.Interno.ToString()),
                       new Claim(ClaimTypes.Role, usuario.Permissao),
                   }),
                 Expires = DateTime.UtcNow.AddHours(4),
