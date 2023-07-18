@@ -8,6 +8,8 @@ using M03_Escola.Interfaces.Repositories;
 using M03_Escola.DataBase.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using M03_Escola.Config;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace M03_Escola
 {
@@ -78,7 +80,27 @@ namespace M03_Escola
             builder.Services.AddScoped<INotasMateriaRepository, NotasMateriaRepository>();
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
+
+            //add cache
             builder.Services.AddMemoryCache();
+
+            var jwtChave = Configuration.GetSection("jwtTokenChave").Get<string>();
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(jwtChave)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            }); ;
+
+
 
             var app = builder.Build();
 
