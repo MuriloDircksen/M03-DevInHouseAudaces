@@ -27,17 +27,22 @@ namespace M03_Escola.Services
         }
 
         public NotasMateria Cadastrar(NotasMateria notasMateria)
-        {      
-            if(notasMateria.Nota < 0)
+        {
+            ValidaNotas(notasMateria);
+            _notasMateriaRepository.Inserir(notasMateria);
+            return notasMateria;
+        }
+
+        private static void ValidaNotas(NotasMateria notasMateria)
+        {
+            if (notasMateria.Nota < 0)
             {
                 throw new ArgumentOutOfRangeException("Nota", notasMateria.Nota, "Nota deve ser maior que zero");
             }
-            else if(notasMateria.Nota > 10) 
+            else if (notasMateria.Nota > 10)
             {
                 throw new ArgumentOutOfRangeException("Nota", notasMateria.Nota, "Nota deve ser menor ou igual a 10");
             }
-            _notasMateriaRepository.Inserir(notasMateria);
-            return notasMateria;
         }
 
         public void Excluir(int id)

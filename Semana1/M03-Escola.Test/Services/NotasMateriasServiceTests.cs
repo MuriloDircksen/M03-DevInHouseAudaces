@@ -2,6 +2,7 @@
 using M03_Escola.Model;
 using M03_Escola.Services;
 using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,33 @@ namespace M03_Escola.Test.Services
             Assert.AreEqual(expectedValue, ex.ActualValue);
         }
 
+        [Test]
+        public void Cadastrar_NotaEntreZeroEDeis_ReturnSucess()
+        {
+            //Arange
+            var notasMateriasRepositryMock = new Mock<INotasMateriaRepository>();
+
+            notasMateriasRepositryMock.Setup(x => x.Inserir(It.IsAny<NotasMateria>()))
+                                                    .Returns<NotasMateria>(x => {
+                                                        x.Id = 10; //sempre retorna um id gerado automatico
+                                                        return x;
+                                                    });
+
+            var notasMateriaService = new NotasMateriaService(notasMateriasRepositryMock.Object);
+
+            var notasMateria = new NotasMateria() { Nota = 10 };
+            var expectedNotasMateria = new NotasMateria() { Nota = 10, Id = 10 };
+
+
+            //ACT
+            var result = notasMateriaService.Cadastrar(notasMateria);
+
+            //Assert
+
+
+            Assert.AreEqual(JsonConvert.SerializeObject(expectedNotasMateria),
+                JsonConvert.SerializeObject(result));
+        }
 
     }
 }
