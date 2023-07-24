@@ -3,13 +3,18 @@ using M03_Escola.Exceptions;
 using M03_Escola.Interfaces.Repositories;
 using M03_Escola.Interfaces.Services;
 using M03_Escola.Model;
+using System.Runtime.ConstrainedExecution;
 
 namespace M03_Escola.Services
 {
     public class NotasMateriaService : INotasMateriaService
     {
         private readonly INotasMateriaRepository _notasMateriaRepository;
-        
+        public NotasMateriaService(INotasMateriaRepository notasMateriaRepository)
+        {
+            _notasMateriaRepository = notasMateriaRepository;
+        }
+
         public NotasMateria Atualizar(NotasMateria notasMateria)
         {
             var notasMateriaDb = _notasMateriaRepository.ObterPorId(notasMateria.Id) ?? throw new NotFoundException("Relação Notas Matéria não cadastrado");
@@ -22,7 +27,11 @@ namespace M03_Escola.Services
         }
 
         public NotasMateria Cadastrar(NotasMateria notasMateria)
-        {          
+        {      
+            if(notasMateria.Nota < 0)
+            {
+                throw new ArgumentOutOfRangeException("Nota", notasMateria.Nota, "Nota deve ser maior que zero");
+            }
             _notasMateriaRepository.Inserir(notasMateria);
             return notasMateria;
         }

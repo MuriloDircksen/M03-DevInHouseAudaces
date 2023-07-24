@@ -11,6 +11,10 @@ namespace M03_Escola.Services
     {
         private readonly IMateriaRepository _materiaRepository;
 
+        public MateriaService(IMateriaRepository materiaRepository)
+        {
+            _materiaRepository = materiaRepository;
+        }
         public Materia Atualizar(Materia materia)
         {
             var materiaDb = _materiaRepository.ObterPorId(materia.Id);

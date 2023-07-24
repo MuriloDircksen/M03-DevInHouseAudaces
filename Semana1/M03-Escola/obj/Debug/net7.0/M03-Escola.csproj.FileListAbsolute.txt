@@ -8,6 +8,7 @@ C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\M03-Escola.pdb
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Azure.Core.dll
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Azure.Identity.dll
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Humanizer.dll
+C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
@@ -74,4 +75,3 @@ C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\refint\M03-Esc
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\M03-Escola.pdb
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\M03-Escola.genruntimeconfig.cache
 C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\obj\Debug\net7.0\ref\M03-Escola.dll
-C:\ws_VisualStudio\exercicios\Semana1\M03-Escola\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
