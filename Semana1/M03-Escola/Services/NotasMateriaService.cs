@@ -32,6 +32,10 @@ namespace M03_Escola.Services
             {
                 throw new ArgumentOutOfRangeException("Nota", notasMateria.Nota, "Nota deve ser maior que zero");
             }
+            else if(notasMateria.Nota > 10) 
+            {
+                throw new ArgumentOutOfRangeException("Nota", notasMateria.Nota, "Nota deve ser menor ou igual a 10");
+            }
             _notasMateriaRepository.Inserir(notasMateria);
             return notasMateria;
         }

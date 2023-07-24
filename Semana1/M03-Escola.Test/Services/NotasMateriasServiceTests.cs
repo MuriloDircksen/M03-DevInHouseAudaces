@@ -41,7 +41,37 @@ namespace M03_Escola.Test.Services
             Assert.IsTrue(ex.Message.Contains(expectedMessage));
             Assert.AreEqual(expectedValue, ex.ActualValue);
         }
-        
+        [Test]
+        public void Cadastrar_NotamaiorQueDeis_ReturnError()
+        {
+            //Arange
+            var notasMateriasRepositryMock = new Mock<INotasMateriaRepository>();
+
+            notasMateriasRepositryMock.Setup(x => x.Inserir(It.IsAny<NotasMateria>()))
+                                                    .Returns<NotasMateria>(x => {
+                                                        x.Id = 10; 
+                                                        return x;
+                                                    });
+
+            var notasMateriaService = new NotasMateriaService(notasMateriasRepositryMock.Object);
+
+            var notasMateria = new NotasMateria() { Nota = 11 };
+            var expectedParam = "Nota";
+            var expectedMessage = "Nota deve ser menor ou igual a 10";
+            var expectedValue = 11;
+
+            //ACT
+
+
+            //Assert
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+            { notasMateriaService.Cadastrar(notasMateria); });
+
+            Assert.AreEqual(expectedParam, ex.ParamName);
+            Assert.IsTrue(ex.Message.Contains(expectedMessage));
+            Assert.AreEqual(expectedValue, ex.ActualValue);
+        }
+
 
     }
 }
