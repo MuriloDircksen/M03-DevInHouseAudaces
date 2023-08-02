@@ -1,0 +1,5 @@
+C:\ws_VisualStudio\exercicios\Semana 5\hellow\obj\Release\net6.0\hellow.csproj.AssemblyReference.cache
+C:\ws_VisualStudio\exercicios\Semana 5\hellow\obj\Release\net6.0\hellow.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws_VisualStudio\exercicios\Semana 5\hellow\obj\Release\net6.0\hellow.AssemblyInfoInputs.cache
+C:\ws_VisualStudio\exercicios\Semana 5\hellow\obj\Release\net6.0\hellow.AssemblyInfo.cs
+C:\ws_VisualStudio\exercicios\Semana 5\hellow\obj\Release\net6.0\hellow.csproj.CoreCompileInputs.cache
