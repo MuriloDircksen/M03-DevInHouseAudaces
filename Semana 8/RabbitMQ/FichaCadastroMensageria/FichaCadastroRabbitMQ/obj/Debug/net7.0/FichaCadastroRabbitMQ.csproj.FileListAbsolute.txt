@@ -1,0 +1,12 @@
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\bin\Debug\net7.0\FichaCadastroRabbitMQ.deps.json
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\bin\Debug\net7.0\FichaCadastroRabbitMQ.dll
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\bin\Debug\net7.0\FichaCadastroRabbitMQ.pdb
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\FichaCadastroRabbitMQ.csproj.AssemblyReference.cache
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\FichaCadastroRabbitMQ.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\FichaCadastroRabbitMQ.AssemblyInfoInputs.cache
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\FichaCadastroRabbitMQ.AssemblyInfo.cs
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\FichaCadastroRabbitMQ.csproj.CoreCompileInputs.cache
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\FichaCadastroRabbitMQ.dll
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\refint\FichaCadastroRabbitMQ.dll
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\FichaCadastroRabbitMQ.pdb
+C:\ws_VisualStudio\exercicios\Semana 8\RabbitMQ\FichaCadastroMensageria\FichaCadastroRabbitMQ\obj\Debug\net7.0\ref\FichaCadastroRabbitMQ.dll

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "zP/FUWpOTOGQaEf6oX7f8gQjzJ3mebWGK53CcfTAGIGTB+Ok1rRzULYiVciUNdN+iL8kvWm+i4LCPHUfRLVpPQ==",
+  "success": true,
+  "projectFilePath": "c:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroRabbitMQ\\FichaCadastroRabbitMQ.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\muril\\.nuget\\packages\\rabbitmq.client\\6.5.0\\rabbitmq.client.6.5.0.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.8\\microsoft.netcore.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.8\\microsoft.windowsdesktop.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.8\\microsoft.aspnetcore.app.ref.7.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
