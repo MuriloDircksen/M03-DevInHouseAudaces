@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3U5/ZPuPipZIoFvcu29+xsR8j/Hy4lkPytYWyR9eC3e20y3pTyYWgiz0WlvbRlIhOhcaUdZj22PjS9UceD3GpA==",
+  "dgSpecHash": "Y8KMk+euXvFRDpyzZtGhk9ZmY+5pzqK7eTUflgLSdsYA2tJ4cnSpicPnrt0P1VM+g9Wq4RUVNR8czZkvT0GQpw==",
   "success": true,
   "projectFilePath": "c:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroWorkService\\FichaCadastroWorkService.csproj",
   "expectedPackageFiles": [
@@ -29,10 +29,13 @@
     "C:\\Users\\muril\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\7.0.0\\microsoft.extensions.options.configurationextensions.7.0.0.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\rabbitmq.client\\6.5.0\\rabbitmq.client.6.5.0.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\system.diagnostics.diagnosticsource\\7.0.1\\system.diagnostics.diagnosticsource.7.0.1.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\system.diagnostics.eventlog\\7.0.0\\system.diagnostics.eventlog.7.0.0.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.8\\microsoft.netcore.app.ref.7.0.8.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.8\\microsoft.windowsdesktop.app.ref.7.0.8.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.8\\microsoft.aspnetcore.app.ref.7.0.8.nupkg.sha512",

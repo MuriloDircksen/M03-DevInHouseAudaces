@@ -5,6 +5,10 @@ namespace FichaCadastroRabbitMQ.Model
                                    string Exchange,
                                    string Type,
                                    string Queue,
+                                   string RouteKey,
                                    bool AutoDelete = false,
-                                   bool Durable = true);
+                                   bool Durable = true)
+    {
+        public byte[]? Message { get; set; }
+    }
 }
