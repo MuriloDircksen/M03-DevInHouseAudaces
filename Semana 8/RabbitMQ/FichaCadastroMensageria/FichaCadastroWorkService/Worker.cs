@@ -5,7 +5,7 @@ using System.Text;
 namespace FichaCadastroWorkService
 {
     public class Worker : BackgroundService
-    {
+    { //precisa  criar o virtualhost no rabbit para ele conseguir se conectar
         private readonly ILogger<Worker> _logger;
         private readonly IMessageRabbitMQ _messageRabbitMQ;
 
@@ -45,14 +45,14 @@ namespace FichaCadastroWorkService
 
                 _messageRabbitMQ.BasicConsume(basicConsumer);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //throw;
             }
 
 
             while (!stoppingToken.IsCancellationRequested) 
-                //verifica se o token de cancelamento não foi solicitado para cancelar excecução do serviço
+                //verifica se o token de cancelamento nï¿½o foi solicitado para cancelar excecuï¿½ï¿½o do serviï¿½o
             {
                 await Task.Delay(5000, stoppingToken);
             }

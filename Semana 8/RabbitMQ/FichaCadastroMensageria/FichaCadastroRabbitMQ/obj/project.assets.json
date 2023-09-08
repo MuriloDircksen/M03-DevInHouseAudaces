@@ -129,11 +129,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroRabbitMQ\\FichaCadastroRabbitMQ.csproj",
+      "projectUniqueName": "C:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroRabbitMQ\\FichaCadastroRabbitMQ.csproj",
       "projectName": "FichaCadastroRabbitMQ",
-      "projectPath": "c:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroRabbitMQ\\FichaCadastroRabbitMQ.csproj",
+      "projectPath": "C:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroRabbitMQ\\FichaCadastroRabbitMQ.csproj",
       "packagesPath": "C:\\Users\\muril\\.nuget\\packages\\",
-      "outputPath": "c:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroRabbitMQ\\obj\\",
+      "outputPath": "C:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\FichaCadastroMensageria\\FichaCadastroRabbitMQ\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
