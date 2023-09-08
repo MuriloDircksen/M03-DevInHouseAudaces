@@ -46,7 +46,11 @@ const RootQuery = new GraphQLObjectType({ //criar a query
                 id: {type: GraphQLString}
             }, //definir o que quer utilizar como parametro de argumento
             resolve(parent, args){
-                return users.find(user => user.id == args.id)
+                let user = users.find(user => user.id == args.id)
+                if (!user) {
+                    throw new Error(`Usuario com ID ${args.id} não encontrado.`); 
+                }
+                return user;
             }
         },
         users:{
@@ -68,7 +72,11 @@ const RootQuery = new GraphQLObjectType({ //criar a query
                 id: {type: GraphQLString}
             }, 
             resolve(parent, args){
-                return posts.find(post => post.id == args.id)
+                let post = posts.find(post => post.id == args.id)
+                if (!post) {
+                    throw new Error(`Usuario com ID ${args.id} não encontrado.`); 
+                }
+                return post;
             }
         }
     }
@@ -86,7 +94,7 @@ const Mutation = new GraphQLObjectType({
             resolve(parent, args){
                 const postUpdate = posts.find(post => post.id === args.id)
                 if (!postUpdate) {
-                    throw new Error(`Livro com ID ${args.id} não encontrado.`); // Trate o caso em que o livro não é encontrado.
+                    throw new Error(`Post com ID ${args.id} não encontrado.`); 
                 }
                 postUpdate.title = args.title;
                 return postUpdate;
