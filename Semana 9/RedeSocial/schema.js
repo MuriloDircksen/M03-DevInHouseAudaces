@@ -74,7 +74,28 @@ const RootQuery = new GraphQLObjectType({ //criar a query
     }
 })
 
+const Mutation = new GraphQLObjectType({
+    name:'Mutation',
+    fields:{
+        updatePostTitle:{
+            type: PostType,
+            args:{
+                id: { type: GraphQLInt },
+                title:{type: GraphQLString}                
+            },
+            resolve(parent, args){
+                const postUpdate = posts.find(post => post.id === args.id)
+                if (!postUpdate) {
+                    throw new Error(`Livro com ID ${args.id} não encontrado.`); // Trate o caso em que o livro não é encontrado.
+                }
+                postUpdate.title = args.title;
+                return postUpdate;
+            } //executar o codigo passando os argumentos
+        }
+    }
+})
+
 module.exports = new GraphQLSchema({ //exportando como schema do graphql
-    query: RootQuery
-   
+    query: RootQuery,
+    mutation: Mutation
 })
