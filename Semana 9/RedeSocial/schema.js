@@ -46,7 +46,7 @@ const RootQuery = new GraphQLObjectType({ //criar a query
                 id: {type: GraphQLString}
             }, //definir o que quer utilizar como parametro de argumento
             resolve(parent, args){
-                return books.find(book => book.id == args.id)
+                return users.find(user => user.id == args.id)
             }
         },
         users:{
