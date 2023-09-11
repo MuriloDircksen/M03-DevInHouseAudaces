@@ -1,6 +1,7 @@
 const { type } = require('express/lib/response')
 const {GraphQLObjectType, GraphQLInt, GraphQLSchema, GraphQLString, GraphQLNonNull, GraphQLList,  GraphQLDirective, DirectiveLocation} = require('graphql') // criando varios schemas
-const { makeExecutableSchema } = require('graphql-tools');
+const axios = require('axios').default; // Importe a biblioteca axios para buscar dados assincronos no json-server
+//const { makeExecutableSchema } = require('graphql-tools');
 //tipagem para os user
 
 const UserType = new GraphQLObjectType({ //GraphQLObjectType tipo genericco
@@ -31,7 +32,29 @@ const PostType = new GraphQLObjectType({ //GraphQLObjectType tipo genericco
         publishDate: {type: GraphQLString}
     })
 })
-
+const AuthorType = new GraphQLObjectType({
+    name: "Author",
+    fields: () => ({
+      id: { type: GraphQLInt },
+      name: { type: GraphQLString },
+      books: {
+        type: new GraphQLList(BookType),
+        resolve: (author) => books.filter((book) => book.authorId === author.id),
+      },
+    }),
+  });
+  const BookType = new GraphQLObjectType({
+    name: "Book",
+    fields: () => ({
+      id: { type: GraphQLInt },
+      title: { type: GraphQLString },
+      authorId: { type: GraphQLInt },
+      author: {
+        type: AuthorType,
+        resolve: (book) => authors.find((author) => author.id === book.authorId),
+      },
+    }),
+  });
 const posts = [
     {id: 1, title: "Olá Mundo", content: "Novo olá", publishDate: "23/03/2023"},
     {id: 2, title: "Olá Brasil", content: "Novo olá Brasil", publishDate: "23/03/2023"},
@@ -40,6 +63,56 @@ const posts = [
 const RootQuery = new GraphQLObjectType({ //criar a query
     name: "RootQueryType",
     fields:{
+        book: {
+            type: BookType,
+            description: "A single book",
+            args: { id: { type: GraphQLInt } },
+            resolve: async (parent, args) =>{
+                try {
+                    const response = await axios.get(`http://localhost:3000/books/${args.id}`);
+                    return response.data;
+                } catch (error) {
+                    throw new Error(`Livro com ID ${args.id} não encontrado.`);
+                }            
+            }
+          },
+          books: {
+            type: new GraphQLList(BookType),
+            description: "List of all books",
+            resolve: async () => {
+                try {
+                    const response = await axios.get(`http://localhost:3000/books`);
+                    return response.data;
+                } catch (error) {
+                    throw new Error(`Não encontramos sua requisição.`);
+                }
+            }       
+          },
+          authors: {
+            type: new GraphQLList(AuthorType),
+            description: "List of all authors",
+            resolve: async () => {
+                try {
+                    const response = await axios.get(`http://localhost:3000/authors`);
+                    return response.data;
+                } catch (error) {
+                    throw new Error(`Não encontramos sua requisição.`);
+                }
+            }       
+          },
+          author: {
+            type: AuthorType,
+            description: "A single author",
+            args: { id: { type: GraphQLInt } },
+            resolve: async (parent, args) =>{
+                try {
+                    const response = await axios.get(`http://localhost:3000/authors/${args.id}`);
+                    return response.data;
+                } catch (error) {
+                    throw new Error(`Autor com ID ${args.id} não encontrado.`);
+                }   
+            }   
+          },
        user:{
             type: UserType,
             description: "The user",
