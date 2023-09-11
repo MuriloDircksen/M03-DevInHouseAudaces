@@ -1,6 +1,6 @@
 const { type } = require('express/lib/response')
-const {GraphQLObjectType, GraphQLInt, GraphQLSchema, GraphQLString, GraphQLNonNull, GraphQLList} = require('graphql') // criando varios schemas
-
+const {GraphQLObjectType, GraphQLInt, GraphQLSchema, GraphQLString, GraphQLNonNull, GraphQLList,  GraphQLDirective, DirectiveLocation} = require('graphql') // criando varios schemas
+const { makeExecutableSchema } = require('graphql-tools');
 //tipagem para os user
 
 const UserType = new GraphQLObjectType({ //GraphQLObjectType tipo genericco
@@ -10,14 +10,15 @@ const UserType = new GraphQLObjectType({ //GraphQLObjectType tipo genericco
         id: {type: GraphQLNonNull(GraphQLString)}, 
         name:{type: GraphQLString},
         age: {type: GraphQLInt},
-        profession: {type: GraphQLString}
+        profession: {type: GraphQLString},
+        email: {type: GraphQLString}
     })
 })
 const users = [
-    {id: 1, name: "Jose Andrade", age: 23, profession: "dev1"},
-    {id: 2, name: "Neusa Maria", age: 24, profession: "dev1"},
-    {id: 3, name: "Jose Saramago", age: 23, profession: "dev3"},
-    {id: 4, name: "Maria Antonieta", age: 29, profession: "dev2"}
+    {id: 1, name: "Jose Andrade", age: 23, profession: "dev1", email: "ja@mail.com"},
+    {id: 2, name: "Neusa Maria", age: 24, profession: "dev1",email: "nm@mail.com"},
+    {id: 3, name: "Jose Saramago", age: 23, profession: "dev3", email: "js@mail.com"},
+    {id: 4, name: "Maria Antonieta", age: 29, profession: "dev2", email: "ma@mail.com"}
     ];
 
 const PostType = new GraphQLObjectType({ //GraphQLObjectType tipo genericco
@@ -82,7 +83,7 @@ const RootQuery = new GraphQLObjectType({ //criar a query
     }
 })
 
-const Mutation = new GraphQLObjectType({
+ const Mutation = new GraphQLObjectType({
     name:'Mutation',
     fields:{
         updatePostTitle:{
@@ -99,11 +100,88 @@ const Mutation = new GraphQLObjectType({
                 postUpdate.title = args.title;
                 return postUpdate;
             } //executar o codigo passando os argumentos
-        }
+        } ,
+        updateUserEmail:{
+            type: UserType,
+            args:{
+                id: {type:GraphQLInt},
+                email: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                const userUpdate = users.find(user => user.id === args.id)
+                if (!userUpdate) {
+                    throw new Error(`Post com ID ${args.id} não encontrado.`); 
+                }
+                if(!isValidEmail(args.email)){
+                    throw new Error(`Email em formato inválido`); 
+                }
+                userUpdate.email = args.email;
+                return userUpdate;
+            }
+        } 
     }
-})
+}) 
+function isValidEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+}
+/* //criando diretiva
+class EmailDirective extends GraphQLDirective {
+    constructor() {
+        super({
+            name: 'email',
+            locations: [DirectiveLocation.FIELD_DEFINITION],
+            args: {},
+        });
+    }
 
+    visitFieldDefinition(field) {
+        const { resolve = defaultFieldResolver } = field;
+        field.resolve = async function (source, args, context, info) {
+            const value = await resolve.call(this, source, args, context, info);
+            if (!isValidEmail(value)) {
+                throw new Error(`O campo "${info.fieldName}" não é um e-mail válido.`);
+            }
+            return value;
+        };
+    }
+}
+
+
+const schema = makeExecutableSchema({
+    typeDefs: `
+        directive @email on FIELD_DEFINITION
+
+        type User {
+            id: String!
+            name: String
+            email: String @email
+        }
+
+        type Mutation {
+            updateUserEmail(id: Int!, email: String!): User
+        }
+    `,
+    resolvers: {
+        Mutation:{
+        name:'Mutation',
+        fields: {
+            updateUserEmail: (parent, args) => {
+                const userUpdate = users.find(user => user.id === args.id);
+                if (!userUpdate) {
+                    throw new Error(`Usuário com ID ${args.id} não encontrado.`);
+                }
+                userUpdate.email = args.email;
+                return userUpdate;
+                },
+            }
+        }
+    },
+    schemaDirectives: {
+        email: EmailDirective,
+    },
+}); */
 module.exports = new GraphQLSchema({ //exportando como schema do graphql
     query: RootQuery,
-    mutation: Mutation
+    mutation: Mutation   
 })
