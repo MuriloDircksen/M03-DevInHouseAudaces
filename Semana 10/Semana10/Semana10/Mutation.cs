@@ -1,4 +1,5 @@
-﻿using Semana10.Type;
+﻿using HotChocolate.AspNetCore;
+using Semana10.Type;
 
 namespace Semana10
 {
@@ -16,6 +17,16 @@ namespace Semana10
             var produto = new Produto { Id = qtd + 1, Name = name, Price = price }; 
             _database.Produtos.Add(produto);
             return produto;
+        }
+        public Customer UpdateEmailCustomer(int id,  string email)
+        {
+            var customer = _database.Customers.Find(x=> x.Id == id);
+            if (customer == null)
+            {
+                throw new GraphQLRequestException("Cliente não encontrado.");
+            }
+            customer.Email = email;
+            return customer;
         }
     }
 }
