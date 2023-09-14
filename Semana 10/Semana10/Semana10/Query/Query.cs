@@ -29,6 +29,10 @@ namespace Semana10.Query
         {
             return _database.Customers;
         }
+        public List<Order> GetOrderByCustomerId( int id)
+        {
+            return _database.Orders.Where(x => x.CustomerId == id).ToList();
+        }
 
     }
 }
