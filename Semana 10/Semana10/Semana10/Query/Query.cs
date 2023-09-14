@@ -20,5 +20,15 @@ namespace Semana10.Query
         {
             return _database.Produtos;
         }
+        public Customer GetCustomer(int id)
+        {
+            return _database.Customers.Find(x => x.Id == id);
+        }
+
+        public List<Customer> GetCustomers()
+        {
+            return _database.Customers;
+        }
+
     }
 }

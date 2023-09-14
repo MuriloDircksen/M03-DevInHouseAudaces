@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iotir3RaCGHSKhQB+ttfKRCrSGIS98JhWduFWN8njsuPYkiqe+u2QNdrxtaaGTDeMwLDcvJfoDJSmV1A/n6mww==",
+  "dgSpecHash": "lSOfs0Emg8+GkCLCZwTyi5ClA7kQ5ml4t6k1fEmFPIH8ZbMbJmajgh5bGwfSuAS4UunZmiUgBj8UKMCO3a0rCg==",
   "success": true,
-  "projectFilePath": "C:\\ws_VisualStudio\\exercicios\\Semana 8\\RabbitMQ\\Semana10\\Semana10\\Semana10.csproj",
+  "projectFilePath": "C:\\ws_VisualStudio\\exercicios\\Semana 10\\Semana10\\Semana10\\Semana10.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muril\\.nuget\\packages\\bananacakepop.middleware\\7.0.4\\bananacakepop.middleware.7.0.4.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\greendonut\\13.5.1\\greendonut.13.5.1.nupkg.sha512",
